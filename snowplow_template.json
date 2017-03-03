@@ -1,0 +1,1349 @@
+{
+    "Parameters": {
+        "BuildBucket": {
+            "Description": "S3 bucket that contains the files necessary to set up the cluster",
+            "Type": "String"
+        },
+        "BuildBucketPath": {
+            "Description": "Path within BuildBucket that contains the files necessary to set up the cluster [optional]",
+            "Type": "String"
+        },
+        "CookieName": {
+            "Description": "Name of website cookie",
+            "Type": "String"
+        },
+        "InstanceTypeCollector": {
+            "AllowedValues": [
+                "t1.micro",
+                "t2.micro",
+                "t2.small",
+                "t2.medium",
+                "m1.small",
+                "m1.medium",
+                "m1.large",
+                "m1.xlarge",
+                "m2.xlarge",
+                "m2.2xlarge",
+                "m2.4xlarge",
+                "m3.medium",
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.2xlarge",
+                "m4.4xlarge",
+                "m4.10xlarge",
+                "c1.medium",
+                "c1.xlarge",
+                "c3.large",
+                "c3.xlarge",
+                "c3.2xlarge",
+                "c3.4xlarge",
+                "c3.8xlarge",
+                "c4.large",
+                "c4.xlarge",
+                "c4.2xlarge",
+                "c4.4xlarge",
+                "c4.8xlarge",
+                "g2.2xlarge",
+                "r3.large",
+                "r3.xlarge",
+                "r3.2xlarge",
+                "r3.4xlarge",
+                "r3.8xlarge",
+                "i2.xlarge",
+                "i2.2xlarge",
+                "i2.4xlarge",
+                "i2.8xlarge",
+                "d2.xlarge",
+                "d2.2xlarge",
+                "d2.4xlarge",
+                "d2.8xlarge",
+                "hi1.4xlarge",
+                "hs1.8xlarge",
+                "cr1.8xlarge",
+                "cc2.8xlarge",
+                "cg1.4xlarge"
+            ],
+            "ConstraintDescription": "must be a valid EC2 instance type.",
+            "Default": "t2.micro",
+            "Description": "Amazon EC2 instance type for collector",
+            "Type": "String"
+        },
+        "InstanceTypeEnricher": {
+            "AllowedValues": [
+                "t1.micro",
+                "t2.micro",
+                "t2.small",
+                "t2.medium",
+                "m1.small",
+                "m1.medium",
+                "m1.large",
+                "m1.xlarge",
+                "m2.xlarge",
+                "m2.2xlarge",
+                "m2.4xlarge",
+                "m3.medium",
+                "m3.large",
+                "m3.xlarge",
+                "m3.2xlarge",
+                "m4.large",
+                "m4.xlarge",
+                "m4.2xlarge",
+                "m4.4xlarge",
+                "m4.10xlarge",
+                "c1.medium",
+                "c1.xlarge",
+                "c3.large",
+                "c3.xlarge",
+                "c3.2xlarge",
+                "c3.4xlarge",
+                "c3.8xlarge",
+                "c4.large",
+                "c4.xlarge",
+                "c4.2xlarge",
+                "c4.4xlarge",
+                "c4.8xlarge",
+                "g2.2xlarge",
+                "r3.large",
+                "r3.xlarge",
+                "r3.2xlarge",
+                "r3.4xlarge",
+                "r3.8xlarge",
+                "i2.xlarge",
+                "i2.2xlarge",
+                "i2.4xlarge",
+                "i2.8xlarge",
+                "d2.xlarge",
+                "d2.2xlarge",
+                "d2.4xlarge",
+                "d2.8xlarge",
+                "hi1.4xlarge",
+                "hs1.8xlarge",
+                "cr1.8xlarge",
+                "cc2.8xlarge",
+                "cg1.4xlarge"
+            ],
+            "ConstraintDescription": "must be a valid EC2 instance type.",
+            "Default": "t2.micro",
+            "Description": "Amazon EC2 instance type for enricher",
+            "Type": "String"
+        },
+        "MaxInstances": {
+            "Default": "2",
+            "Description": "Maximum number of instances per Beanstalk",
+            "Type": "String"
+        },
+        "MinInstances": {
+            "Default": "1",
+            "Description": "Minimum number of instances per Beanstalk",
+            "Type": "String"
+        },
+        "RedisNodeType": {
+            "AllowedValues": [
+                "cache.m1.small",
+                "cache.m1.large",
+                "cache.m1.xlarge",
+                "cache.m2.xlarge",
+                "cache.m2.2xlarge",
+                "cache.m2.4xlarge",
+                "cache.c1.xlarge",
+                "cache.t2.micro",
+                "cache.t2.small",
+                "cache.t2.medium",
+                "cache.m3.medium",
+                "cache.m3.large",
+                "cache.m3.xlarge",
+                "cache.m3.2xlarge",
+                "cache.r3.large",
+                "cache.r3.xlarge",
+                "cache.r3.2xlarge",
+                "cache.r3.4xlarge",
+                "cache.r3.8xlarge"
+            ],
+            "Default": "cache.t2.small",
+            "Description": "The compute and memory capacity of the nodes in the Redis Cluster",
+            "Type": "String"
+        },
+        "RedisNumNodes": {
+            "Default": "1",
+            "Description": "Number of nodes in Redis cluster",
+            "Type": "String"
+        },
+        "SSHKeyPair": {
+            "Description": "Name of Key Pair used to access instances",
+            "Type": "AWS::EC2::KeyPair::KeyName"
+        },
+        "SecurityGroups": {
+            "Description": "List of security groups",
+            "Type": "List<AWS::EC2::SecurityGroup::Id>"
+        },
+        "SourceBundleCollector": {
+            "Default": "snowplow-collector-0.9.0-source.zip",
+            "Description": "Name of source bundle for collector",
+            "Type": "String"
+        },
+        "SourceBundleEnricher": {
+            "Default": "snowplow-enricher-0.10.0-source.zip",
+            "Description": "Name of source bundle for enricher",
+            "Type": "String"
+        },
+        "SubnetsPrivate": {
+            "Description": "Subnet(s) to deploy ec2 instances in.",
+            "Type": "List<AWS::EC2::Subnet::Id>"
+        },
+        "SubnetsPublic": {
+            "Description": "Subnet(s) to deploy Collector ELB in.",
+            "Type": "List<AWS::EC2::Subnet::Id>"
+        },
+        "TargetBucket": {
+            "Description": "Target bucket for firehose stream",
+            "Type": "String"
+        },
+        "TargetBucketPath": {
+            "Description": "Path within target bucket",
+            "Type": "String"
+        },
+        "VPC": {
+            "Description": "VPC zone to launch stack in. Subnets must be in AZ.",
+            "Type": "AWS::EC2::VPC::Id"
+        }
+    },
+    "Resources": {
+        "EnrichedToFirehoseLambda": {
+            "Properties": {
+                "Code": {
+                    "S3Bucket": {
+                        "Ref": "BuildBucket"
+                    },
+                    "S3Key": {
+                        "Fn::Join": [
+                            "/",
+                            [
+                                {
+                                    "Ref": "BuildBucketPath"
+                                },
+                                "enriched-to-firehose.zip"
+                            ]
+                        ]
+                    }
+                },
+                "Description": "Takes batch of records from kinesis enriched stream and sends it to S3 through firehose",
+                "Environment": {
+                    "Variables": {
+                        "firehose_stream_name": {
+                            "Ref": "FirehoseStream"
+                        }
+                    }
+                },
+                "FunctionName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "enriched-to-firehose",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                },
+                "Handler": "service.lambda_handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "lambdaRole",
+                        "Arn"
+                    ]
+                },
+                "Runtime": "python2.7",
+                "Timeout": 60
+            },
+            "Type": "AWS::Lambda::Function"
+        },
+        "EnrichedToRedisLambda": {
+            "Properties": {
+                "Code": {
+                    "S3Bucket": {
+                        "Ref": "BuildBucket"
+                    },
+                    "S3Key": {
+                        "Fn::Join": [
+                            "/",
+                            [
+                                {
+                                    "Ref": "BuildBucketPath"
+                                },
+                                "enriched-to-redis.zip"
+                            ]
+                        ]
+                    }
+                },
+                "Description": "Takes batch of records from kinesis enriched stream and inserts into Redis",
+                "Environment": {
+                    "Variables": {
+                        "REDIS_ENDPOINT": {
+                            "Fn::GetAtt": [
+                                "RedisCluster",
+                                "RedisEndpoint.Address"
+                            ]
+                        },
+                        "REDIS_PORT": {
+                            "Fn::GetAtt": [
+                                "RedisCluster",
+                                "RedisEndpoint.Port"
+                            ]
+                        }
+                    }
+                },
+                "FunctionName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "enriched-to-redis",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                },
+                "Handler": "service.handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "lambdaRole",
+                        "Arn"
+                    ]
+                },
+                "Runtime": "python2.7",
+                "Timeout": 60,
+                "VpcConfig": {
+                    "SecurityGroupIds": {
+                        "Ref": "SecurityGroups"
+                    },
+                    "SubnetIds": {
+                        "Ref": "SubnetsPrivate"
+                    }
+                }
+            },
+            "Type": "AWS::Lambda::Function"
+        },
+        "FirehoseStream": {
+            "Properties": {
+                "DeliveryStreamName": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "firehose-stream",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                },
+                "S3DestinationConfiguration": {
+                    "BucketARN": {
+                        "Fn::Join": [
+                            "",
+                            [
+                                "arn:aws:s3:::",
+                                {
+                                    "Ref": "TargetBucket"
+                                }
+                            ]
+                        ]
+                    },
+                    "BufferingHints": {
+                        "IntervalInSeconds": 900,
+                        "SizeInMBs": 5
+                    },
+                    "CompressionFormat": "GZIP",
+                    "Prefix": {
+                        "Fn::Join": [
+                            "",
+                            [
+                                {
+                                    "Ref": "TargetBucketPath"
+                                },
+                                "/"
+                            ]
+                        ]
+                    },
+                    "RoleARN": {
+                        "Fn::GetAtt": [
+                            "firehoseRole",
+                            "Arn"
+                        ]
+                    }
+                }
+            },
+            "Type": "AWS::KinesisFirehose::DeliveryStream"
+        },
+        "RedisCluster": {
+            "Properties": {
+                "CacheNodeType": {
+                    "Ref": "RedisNodeType"
+                },
+                "Engine": "redis",
+                "NumCacheNodes": {
+                    "Ref": "RedisNumNodes"
+                },
+                "VpcSecurityGroupIds": {
+                    "Ref": "SecurityGroups"
+                }
+            },
+            "Type": "AWS::ElastiCache::CacheCluster"
+        },
+        "SnowplowApplication": {
+            "Properties": {
+                "ApplicationName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "application"
+                        ]
+                    ]
+                },
+                "Description": {
+                    "Fn::Join": [
+                        " ",
+                        [
+                            "AWS Elastic Beanstalk Application for",
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "Collector"
+                        ]
+                    ]
+                }
+            },
+            "Type": "AWS::ElasticBeanstalk::Application"
+        },
+        "SnowplowCollectorApplicationVersion": {
+            "Properties": {
+                "ApplicationName": {
+                    "Ref": "SnowplowApplication"
+                },
+                "Description": {
+                    "Fn::Join": [
+                        " ",
+                        [
+                            "AWS ElasticBeanstalk Application Version for",
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "Collector"
+                        ]
+                    ]
+                },
+                "SourceBundle": {
+                    "S3Bucket": {
+                        "Ref": "BuildBucket"
+                    },
+                    "S3Key": {
+                        "Fn::Join": [
+                            "/",
+                            [
+                                {
+                                    "Ref": "BuildBucketPath"
+                                },
+                                {
+                                    "Ref": "SourceBundleCollector"
+                                }
+                            ]
+                        ]
+                    }
+                }
+            },
+            "Type": "AWS::ElasticBeanstalk::ApplicationVersion"
+        },
+        "SnowplowCollectorKinesisBad": {
+            "Properties": {
+                "Name": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "collectorBad",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                },
+                "ShardCount": "1"
+            },
+            "Type": "AWS::Kinesis::Stream"
+        },
+        "SnowplowCollectorKinesisGood": {
+            "Properties": {
+                "Name": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "collectorGood",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                },
+                "ShardCount": "1"
+            },
+            "Type": "AWS::Kinesis::Stream"
+        },
+        "SnowplowEnricherApplicationVersion": {
+            "Properties": {
+                "ApplicationName": {
+                    "Ref": "SnowplowApplication"
+                },
+                "Description": {
+                    "Fn::Join": [
+                        " ",
+                        [
+                            "AWS ElasticBeanstalk Application Version for",
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "Enricher"
+                        ]
+                    ]
+                },
+                "SourceBundle": {
+                    "S3Bucket": {
+                        "Ref": "BuildBucket"
+                    },
+                    "S3Key": {
+                        "Fn::Join": [
+                            "/",
+                            [
+                                {
+                                    "Ref": "BuildBucketPath"
+                                },
+                                {
+                                    "Ref": "SourceBundleEnricher"
+                                }
+                            ]
+                        ]
+                    }
+                }
+            },
+            "Type": "AWS::ElasticBeanstalk::ApplicationVersion"
+        },
+        "SnowplowEnricherKinesisBad": {
+            "Properties": {
+                "Name": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "enricherBad",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                },
+                "ShardCount": "1"
+            },
+            "Type": "AWS::Kinesis::Stream"
+        },
+        "SnowplowEnricherKinesisGood": {
+            "Properties": {
+                "Name": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "enricherGood",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                },
+                "ShardCount": "1"
+            },
+            "Type": "AWS::Kinesis::Stream"
+        },
+        "ec2InstanceProfile": {
+            "Properties": {
+                "Roles": [
+                    {
+                        "Ref": "ec2Role"
+                    }
+                ]
+            },
+            "Type": "AWS::IAM::InstanceProfile"
+        },
+        "ec2Role": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "sts:AssumeRole"
+                            ],
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "ec2.amazonaws.com"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess",
+                    "arn:aws:iam::aws:policy/AWSElasticBeanstalkWebTier",
+                    "arn:aws:iam::aws:policy/AWSElasticBeanstalkMulticontainerDocker",
+                    "arn:aws:iam::aws:policy/AWSElasticBeanstalkWorkerTier",
+                    "arn:aws:iam::aws:policy/AmazonKinesisFullAccess",
+                    "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+                ],
+                "RoleName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "snowplow-ec2-role",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "enrichedToFirehoseTrigger": {
+            "Properties": {
+                "BatchSize": 100,
+                "Enabled": true,
+                "EventSourceArn": {
+                    "Fn::GetAtt": [
+                        "SnowplowEnricherKinesisGood",
+                        "Arn"
+                    ]
+                },
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "EnrichedToFirehoseLambda",
+                        "Arn"
+                    ]
+                },
+                "StartingPosition": "TRIM_HORIZON"
+            },
+            "Type": "AWS::Lambda::EventSourceMapping"
+        },
+        "enrichedToRedisTrigger": {
+            "Properties": {
+                "BatchSize": 100,
+                "Enabled": true,
+                "EventSourceArn": {
+                    "Fn::GetAtt": [
+                        "SnowplowEnricherKinesisGood",
+                        "Arn"
+                    ]
+                },
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "EnrichedToRedisLambda",
+                        "Arn"
+                    ]
+                },
+                "StartingPosition": "TRIM_HORIZON"
+            },
+            "Type": "AWS::Lambda::EventSourceMapping"
+        },
+        "firehoseRole": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "sts:AssumeRole"
+                            ],
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "firehose.amazonaws.com"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Policies": [
+                    {
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "s3:AbortMultipartUpload",
+                                        "s3:GetBucketLocation",
+                                        "s3:GetObject",
+                                        "s3:ListBucket",
+                                        "s3:ListBucketMultipartUploads",
+                                        "s3:PutObject"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "arn:aws:s3:::",
+                                                    {
+                                                        "Ref": "TargetBucket"
+                                                    }
+                                                ]
+                                            ]
+                                        },
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "arn:aws:s3:::",
+                                                    {
+                                                        "Ref": "TargetBucket"
+                                                    },
+                                                    "/*"
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "PolicyName": "snowplowTargetBucketPolicy"
+                    }
+                ],
+                "RoleName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "snowplow-firehose-role",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "lambdaRole": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "sts:AssumeRole"
+                            ],
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "Policies": [
+                    {
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "kinesis:Get*",
+                                        "kinesis:List*",
+                                        "kinesis:Describe*",
+                                        "firehose:*",
+                                        "logs:CreateLogGroup",
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents",
+                                        "ec2:CreateNetworkInterface",
+                                        "ec2:DescribeNetworkInterfaces",
+                                        "ec2:DeleteNetworkInterface"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        "*"
+                                    ]
+                                }
+                            ]
+                        },
+                        "PolicyName": {
+                            "Fn::Join": [
+                                "-",
+                                [
+                                    "snowplow-lambda-policy",
+                                    {
+                                        "Ref": "AWS::StackName"
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ],
+                "RoleName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "snowplow-lambda-role",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "serviceRole": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "sts:AssumeRole"
+                            ],
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "elasticbeanstalk.amazonaws.com"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AWSElasticBeanstalkEnhancedHealth",
+                    "arn:aws:iam::aws:policy/service-role/AWSElasticBeanstalkService"
+                ],
+                "RoleName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            "snowplow-service-role",
+                            {
+                                "Ref": "AWS::StackName"
+                            }
+                        ]
+                    ]
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "snowplowCollectorConfigurationTemplate": {
+            "Properties": {
+                "ApplicationName": {
+                    "Ref": "SnowplowApplication"
+                },
+                "Description": {
+                    "Fn::Join": [
+                        " ",
+                        [
+                            "AWS ElasticBeanstalk Configuration Template for",
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "Collector"
+                        ]
+                    ]
+                },
+                "OptionSettings": [
+                    {
+                        "Namespace": "aws:ec2:vpc",
+                        "OptionName": "ELBSubnets",
+                        "Value": {
+                            "Fn::Join": [
+                                ",",
+                                {
+                                    "Ref": "SubnetsPublic"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Namespace": "aws:ec2:vpc",
+                        "OptionName": "AssociatePublicIpAddress",
+                        "Value": "true"
+                    },
+                    {
+                        "Namespace": "aws:elb:listener:443",
+                        "OptionName": "InstancePort",
+                        "Value": "80"
+                    },
+                    {
+                        "Namespace": "aws:elb:policies",
+                        "OptionName": "Stickiness Cookie Expiration",
+                        "Value": "60"
+                    },
+                    {
+                        "Namespace": "aws:elb:policies",
+                        "OptionName": "ConnectionDrainingEnabled",
+                        "Value": "true"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:launchconfiguration",
+                        "OptionName": "InstanceType",
+                        "Value": {
+                            "Ref": "InstanceTypeCollector"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "MeasureName",
+                        "Value": "Latency"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "LowerThreshold",
+                        "Value": "0.008"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "UpperThreshold",
+                        "Value": "0.015"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "BreachDuration",
+                        "Value": "15"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "Unit",
+                        "Value": "Seconds"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                        "OptionName": "RollingUpdateType",
+                        "Value": "Health"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application",
+                        "OptionName": "Application Healthcheck URL",
+                        "Value": "/health"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application:environment",
+                        "OptionName": "COOKIE_NAME",
+                        "Value": {
+                            "Ref": "CookieName"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application:environment",
+                        "OptionName": "STREAM_GOOD",
+                        "Value": {
+                            "Ref": "SnowplowCollectorKinesisGood"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application:environment",
+                        "OptionName": "STREAM_BAD",
+                        "Value": {
+                            "Ref": "SnowplowCollectorKinesisBad"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:ec2:vpc",
+                        "OptionName": "VPCId",
+                        "Value": {
+                            "Ref": "VPC"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:ec2:vpc",
+                        "OptionName": "Subnets",
+                        "Value": {
+                            "Fn::Join": [
+                                ",",
+                                {
+                                    "Ref": "SubnetsPrivate"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:launchconfiguration",
+                        "OptionName": "IamInstanceProfile",
+                        "Value": {
+                            "Ref": "ec2InstanceProfile"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:launchconfiguration",
+                        "OptionName": "EC2KeyName",
+                        "Value": {
+                            "Ref": "SSHKeyPair"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:launchconfiguration",
+                        "OptionName": "SecurityGroups",
+                        "Value": {
+                            "Fn::Join": [
+                                ",",
+                                {
+                                    "Ref": "SecurityGroups"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:asg",
+                        "OptionName": "MinSize",
+                        "Value": {
+                            "Ref": "MinInstances"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:asg",
+                        "OptionName": "MaxSize",
+                        "Value": {
+                            "Ref": "MaxInstances"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:environment",
+                        "OptionName": "EnvironmentType",
+                        "Value": "LoadBalanced"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:environment",
+                        "OptionName": "ServiceRole",
+                        "Value": {
+                            "Ref": "serviceRole"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                        "OptionName": "MaxBatchSize",
+                        "Value": "1"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                        "OptionName": "MinInstancesInService",
+                        "Value": {
+                            "Ref": "MinInstances"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                        "OptionName": "RollingUpdateEnabled",
+                        "Value": "true"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:command",
+                        "OptionName": "DeploymentPolicy",
+                        "Value": "Rolling"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:command",
+                        "OptionName": "BatchSize",
+                        "Value": "1"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application:environment",
+                        "OptionName": "AWS_REGION",
+                        "Value": {
+                            "Ref": "AWS::Region"
+                        }
+                    }
+                ],
+                "SolutionStackName": "64bit Amazon Linux 2016.09 v2.3.0 running Docker 1.11.2"
+            },
+            "Type": "AWS::ElasticBeanstalk::ConfigurationTemplate"
+        },
+        "snowplowCollectorEnvironment": {
+            "Properties": {
+                "ApplicationName": {
+                    "Ref": "SnowplowApplication"
+                },
+                "Description": {
+                    "Fn::Join": [
+                        " ",
+                        [
+                            "AWS ElasticBeanstalk Environment for",
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "Collector"
+                        ]
+                    ]
+                },
+                "EnvironmentName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "collector"
+                        ]
+                    ]
+                },
+                "TemplateName": {
+                    "Ref": "snowplowCollectorConfigurationTemplate"
+                },
+                "VersionLabel": {
+                    "Ref": "SnowplowCollectorApplicationVersion"
+                }
+            },
+            "Type": "AWS::ElasticBeanstalk::Environment"
+        },
+        "snowplowEnricherConfigurationTemplate": {
+            "Properties": {
+                "ApplicationName": {
+                    "Ref": "SnowplowApplication"
+                },
+                "Description": {
+                    "Fn::Join": [
+                        " ",
+                        [
+                            "AWS ElasticBeanstalk Configuration Template for",
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "Enricher"
+                        ]
+                    ]
+                },
+                "OptionSettings": [
+                    {
+                        "Namespace": "aws:autoscaling:launchconfiguration",
+                        "OptionName": "InstanceType",
+                        "Value": {
+                            "Ref": "InstanceTypeEnricher"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "MeasureName",
+                        "Value": "CPUUtilization"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "Statistic",
+                        "Value": "Average"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "LowerThreshold",
+                        "Value": "20"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "UpperThreshold",
+                        "Value": "80"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "BreachDuration",
+                        "Value": "15"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:trigger",
+                        "OptionName": "Unit",
+                        "Value": "Percent"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                        "OptionName": "RollingUpdateType",
+                        "Value": "Time"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                        "OptionName": "PauseTime",
+                        "Value": "PT10M"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application:environment",
+                        "OptionName": "STREAM_GOOD",
+                        "Value": {
+                            "Ref": "SnowplowEnricherKinesisGood"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application:environment",
+                        "OptionName": "STREAM_BAD",
+                        "Value": {
+                            "Ref": "SnowplowEnricherKinesisBad"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application:environment",
+                        "OptionName": "INPUT_STREAM",
+                        "Value": {
+                            "Ref": "SnowplowCollectorKinesisGood"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application:environment",
+                        "OptionName": "DYNAMODB_NAME",
+                        "Value": {
+                            "Fn::Join": [
+                                "-",
+                                [
+                                    "SnowplowKinesisEnrich",
+                                    {
+                                        "Ref": "AWS::StackName"
+                                    }
+                                ]
+                            ]
+                        }
+                    },
+                    {
+                        "Namespace": "aws:ec2:vpc",
+                        "OptionName": "VPCId",
+                        "Value": {
+                            "Ref": "VPC"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:ec2:vpc",
+                        "OptionName": "Subnets",
+                        "Value": {
+                            "Fn::Join": [
+                                ",",
+                                {
+                                    "Ref": "SubnetsPrivate"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:launchconfiguration",
+                        "OptionName": "IamInstanceProfile",
+                        "Value": {
+                            "Ref": "ec2InstanceProfile"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:launchconfiguration",
+                        "OptionName": "EC2KeyName",
+                        "Value": {
+                            "Ref": "SSHKeyPair"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:launchconfiguration",
+                        "OptionName": "SecurityGroups",
+                        "Value": {
+                            "Fn::Join": [
+                                ",",
+                                {
+                                    "Ref": "SecurityGroups"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:asg",
+                        "OptionName": "MinSize",
+                        "Value": {
+                            "Ref": "MinInstances"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:asg",
+                        "OptionName": "MaxSize",
+                        "Value": {
+                            "Ref": "MaxInstances"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:environment",
+                        "OptionName": "EnvironmentType",
+                        "Value": "LoadBalanced"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:environment",
+                        "OptionName": "ServiceRole",
+                        "Value": {
+                            "Ref": "serviceRole"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                        "OptionName": "MaxBatchSize",
+                        "Value": "1"
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                        "OptionName": "MinInstancesInService",
+                        "Value": {
+                            "Ref": "MinInstances"
+                        }
+                    },
+                    {
+                        "Namespace": "aws:autoscaling:updatepolicy:rollingupdate",
+                        "OptionName": "RollingUpdateEnabled",
+                        "Value": "true"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:command",
+                        "OptionName": "DeploymentPolicy",
+                        "Value": "Rolling"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:command",
+                        "OptionName": "BatchSize",
+                        "Value": "1"
+                    },
+                    {
+                        "Namespace": "aws:elasticbeanstalk:application:environment",
+                        "OptionName": "AWS_REGION",
+                        "Value": {
+                            "Ref": "AWS::Region"
+                        }
+                    }
+                ],
+                "SolutionStackName": "64bit Amazon Linux 2016.09 v2.3.0 running Docker 1.11.2"
+            },
+            "Type": "AWS::ElasticBeanstalk::ConfigurationTemplate"
+        },
+        "snowplowEnricherEnvironment": {
+            "Properties": {
+                "ApplicationName": {
+                    "Ref": "SnowplowApplication"
+                },
+                "Description": {
+                    "Fn::Join": [
+                        " ",
+                        [
+                            "AWS ElasticBeanstalk Environment for",
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "Enricher"
+                        ]
+                    ]
+                },
+                "EnvironmentName": {
+                    "Fn::Join": [
+                        "-",
+                        [
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "enricher"
+                        ]
+                    ]
+                },
+                "TemplateName": {
+                    "Ref": "snowplowEnricherConfigurationTemplate"
+                },
+                "Tier": {
+                    "Name": "Worker",
+                    "Type": "SQS/HTTP",
+                    "Version": "1.0"
+                },
+                "VersionLabel": {
+                    "Ref": "SnowplowEnricherApplicationVersion"
+                }
+            },
+            "Type": "AWS::ElasticBeanstalk::Environment"
+        }
+    }
+}
